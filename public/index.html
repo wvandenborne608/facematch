@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="lib/crafty.js"></script>
+  <script src="lib/match3.js"></script>
+  <script src="src/game.js"></script>
+  <script src="src/components.js"></script>
+  <script src="src/components_piece.js"></script>
+  <script src="src/components_score.js"></script>
+  <script src="src/components_match3.js"></script>
+  <script src="src/components_tweener.js"></script>
+  <script src="src/components_gamescene.js"></script>
+  <script src="src/scene_about.js"></script>
+  <script src="src/scene_gameover.js"></script>
+  <script src="src/scene_gamescene.js"></script>
+  <script src="src/scene_loading.js"></script>
+  <script src="src/scene_mainmenu.js"></script>
+  <script src="src/scene_scores.js"></script>
+  <script>
+    window.addEventListener('load', Game.start);
+  </script>
+  <style type="text/css" media="screen">
+    body {
+      background: black;
+      text-align: center;
+      color: #DDD;
+      font-family: Arial;
+    }
+    #cr-stage { margin: 20px auto 0; }
+  </style>
+</head>
+<body>
+  <div id="cr-stage"></div>
+</body>
+</html>
