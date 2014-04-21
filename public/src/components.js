@@ -13,10 +13,7 @@ Crafty.c("button_type1", {
       this.bind('MouseOver', function() { this.animate("over", 1, 0);    })
       this.bind('MouseDown', function() { this.animate("press", 1, 0);   })
       this.bind('MouseOut',  function() { this.animate("release", 1, 0); })
-      this.bind('MouseUp',   function() { this.animate("release", 1, 0); })
-      this.bind('Click',     function() {
-        Crafty.scene( scene_to_open ); 
-      });
+      this.bind('MouseUp',   function() { this.animate("release", 1, 0); Crafty.scene( scene_to_open ); })
     },
     disappear: function(xpos, ypos, sprite_id, xpos_removed, ypos_removed, speed){
       this.requires(sprite_id)
@@ -61,4 +58,38 @@ Crafty.c("showtransparentgradient_type1", {
        .attr({alpha: 0.0, x: 0, y: 0})
        .tween({alpha: 0.0}, speed)
     },
+});
+
+
+Crafty.c("HelpAnim", {
+    init: function(){
+      this.requires('2D, DOM, Tween, Tweener');
+    },
+    show: function(){
+      this.requires("help_anim")
+          .attr({alpha: 0.0, x: 280, y: -165})
+          .addTween({x: 280, y: 135}, 'easeOutExpo', 30)
+          .tween({alpha: 1.0}, 30)
+    },
+    disappear: function(){
+      this.requires("help_anim")
+          .attr({alpha: 1.0, x: 280, y: 135})
+          .addTween({x: 280, y: -165}, 'easeOutExpo', 30)
+          .tween({alpha: 0.0}, 30)
+    }
+});
+
+
+Crafty.c('HelpText', {
+  init: function() {
+    var self;
+    this.requires('2D, DOM, Text');
+    this.text("Swap pieces and make matches of three or more.");
+    this.attr({
+      x: 500,
+      y: 165,
+      w: 140,
+      z: 200
+    }).css({'text-align': 'left', 'color':'#000000', 'fontSize':'20px' });
+  }
 });

@@ -348,10 +348,8 @@ Crafty.c('Match3', {
       }
 
       var score = (Game.piece.properties.totalTypes - tmpPieceType)
-      score = score * tmpPieceType * 12;
-      score = score * (Game.states.dropping + 1)  * 24;
+      score = 12 * score * (Game.states.dropping + 1)  * 24;
       Game.score.totalScore = Game.score.totalScore + score ;
-
       Crafty.e("Delay").delay(function() {
         Game.score.totalScoreTextElement.render(Game.score.totalScore);
       }, 1000);
@@ -418,8 +416,13 @@ Crafty.c('Match3', {
           that.execMatches();
         }, 100);
 
-
+      } else {
+        Game.piece.piecesArray[gridY][gridX].invalidMovePiece(gridX, gridY, Game.piece.selectedPiece.x, Game.piece.selectedPiece.y);
+        Game.piece.piecesArray[Game.piece.selectedPiece.y][Game.piece.selectedPiece.x].invalidMovePiece(Game.piece.selectedPiece.x, Game.piece.selectedPiece.y, gridX, gridY);
+        Game.piece.selectedPiece.x = -1
+        Game.piece.selectedPiece.y = -1
       }
+
     }  
   },
 

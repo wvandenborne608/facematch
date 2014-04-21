@@ -21,11 +21,17 @@ Crafty.scene('Loading', function(){
                 "assets/img/title_scores.png",
                 "assets/img/title_timeup.png",
                 "assets/img/pieces.png",
-                "assets/img/transparentgradient_background.png"
+                "assets/img/transparentgradient_background.png",
+                "assets/img/help_anim.gif"
               ],
 
     // on load finish
     function() {
+
+      /mobile/i.test(navigator.userAgent) && !window.location.hash && setTimeout(function () {
+        window.scrollTo(0, 1);
+      }, 1000);
+      
       loading_text.text('Done!');
 
       Crafty.sprite( 129, 48, "assets/img/button_about.png",    {"btn_mainmenu_about":    [0,0]} ); //assign sprite
@@ -39,6 +45,7 @@ Crafty.scene('Loading', function(){
       Crafty.sprite( 220, 62, "assets/img/title_about.png",     {"title_about":           [0, 0]});
       Crafty.sprite( 296, 73, "assets/img/title_timeup.png",    {"title_timeup":          [0, 0]});
       Crafty.sprite(720, 440, "assets/img/transparentgradient_background.png", {"background_gradient": [0, 0]});
+      Crafty.sprite(165, 165, "assets/img/help_anim.gif", {"help_anim": [0, 0]});
 
       Crafty.sprite(55, 'assets/img/pieces.png', {
         spr_pieces:  [0, Game.piece.properties.totalTypes],

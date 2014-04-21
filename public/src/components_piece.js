@@ -34,6 +34,10 @@ Crafty.c('Piece', {
     this.attr({x:this.gridPosToPixelsX(xPosFrom) ,y:this.gridPosToPixelsY(yPosFrom)})
       .addTween({x:this.gridPosToPixelsX(xPosTo),y:this.gridPosToPixelsY(yPosTo)}, 'easeOutExpo', Game.piece.properties.swapSpeed)
   },  
+  invalidMovePiece: function(xPosFrom, yPosFrom, xPosTo, yPosTo){
+    this.attr({x:this.gridPosToPixelsX(xPosTo) ,y:this.gridPosToPixelsY(yPosTo)})
+      .addTween({x:this.gridPosToPixelsX(xPosFrom),y:this.gridPosToPixelsY(yPosFrom)}, 'easeInOutElastic', Game.piece.properties.swapSpeed)
+  },  
   drop: function(xPos, yPos, pieceType, dropAmount){
   	this.xPos = xPos;
   	this.yPos = yPos+dropAmount;
